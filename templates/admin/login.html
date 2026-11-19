@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Login | PRIYO</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/admin.css') }}">
+</head>
+<body class="login-body">
+
+<div class="login-card">
+    <a href="/" class="brand">PRIYO<span>.</span></a>
+    <p class="login-subtitle">CONTENT MANAGEMENT SYSTEM</p>
+
+    <div class="login-heading">
+        <h1>Welcome back.</h1>
+        <p>Sign in to manage your website.</p>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <div class="alert {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Enter username"
+               autocomplete="username" required autofocus>
+
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter password"
+               autocomplete="current-password" required>
+
+        <button type="submit" class="primary-btn">Sign In →</button>
+    </form>
+
+    <p class="login-footer">PRIVATE ADMINISTRATION · PRIYO 2026</p>
+</div>
+
+</body>
+</html>

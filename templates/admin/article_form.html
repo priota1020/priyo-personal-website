@@ -1,0 +1,64 @@
+
+{% extends "admin/base.html" %}
+
+{% block title %}{{ 'Edit Article' if article else 'New Article' }}{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">CONTENT / EDITOR</p>
+        <h1>{{ 'Edit Article' if article else 'New Article' }}<span>.</span></h1>
+        <p>Write and manage your content.</p>
+    </div>
+</div>
+
+<div class="form-card">
+
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <label>Article Title *</label>
+        <input type="text" name="title"
+               value="{{ article.title if article else '' }}"
+               placeholder="Enter article title" required>
+
+        <label>Category *</label>
+        <select name="category" required>
+            {% for cat in ['Articles & Ideas', 'Poetry & Literature', 'Sports & Entertainment'] %}
+            <option value="{{ cat }}"
+                {% if article and article.category == cat %}selected{% endif %}>
+                {{ cat }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <label>Short Description</label>
+        <textarea name="excerpt" rows="3"
+                  placeholder="Write a short introduction...">{{ article.excerpt if article else '' }}</textarea>
+
+        <label>Article Content *</label>
+        <textarea name="content" rows="14"
+                  placeholder="Write your article here..." required>{{ article.content if article else '' }}</textarea>
+
+        <label>Publication Status</label>
+        <select name="status">
+            <option value="draft"
+                {% if not article or article.status == 'draft' %}selected{% endif %}>
+                Draft
+            </option>
+            <option value="published"
+                {% if article and article.status == 'published' %}selected{% endif %}>
+                Published
+            </option>
+        </select>
+
+        <div class="form-actions">
+            <button type="submit" class="primary-btn">Save Article →</button>
+            <a href="{{ url_for('admin_articles') }}" class="cancel-link">Cancel</a>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

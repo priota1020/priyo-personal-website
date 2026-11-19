@@ -1,0 +1,996 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#04060D">
+<title>Mizanur Rahman Priota | PRIYO</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #04060D;
+    --ink: #F2ECDD;
+    --muted: #9AA2B8;
+    --line: #19203A;
+    --glaze: #CDAE6B;
+    --gold: #8E9FD0;
+    --panel: #0A1020;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 75px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.wrap {
+    max-width: 1240px;
+    margin: auto;
+    padding: 0 28px;
+}
+
+.f {
+    font-family: 'Fraunces', Georgia, serif;
+}
+
+/* NAVIGATION */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(4, 6, 13, .92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+}
+
+nav .wrap {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Fraunces', serif;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+}
+
+nav ul a {
+    color: var(--muted);
+    font-size: 12px;
+    transition: .3s;
+}
+
+nav ul a:hover {
+    color: var(--glaze);
+}
+
+/* HERO */
+
+.hero-outer {
+    position: relative;
+    min-height: calc(100vh - 70px);
+    min-height: calc(100svh - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero {
+    position: relative;
+    z-index: 2;
+    padding-top: 55px;
+    padding-bottom: 45px;
+}
+
+.name {
+    position: relative;
+    z-index: 2;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(65px, 10vw, 145px);
+    line-height: .95;
+    letter-spacing: -.045em;
+    font-weight: 300;
+    margin-left: -.04em;
+}
+
+.name .ln {
+    display: block;
+    overflow: hidden;
+    padding-bottom: .06em;
+}
+
+.name .ln:nth-child(2) {
+    padding-left: 7vw;
+    font-style: italic;
+}
+
+.name .ln:nth-child(3) {
+    padding-left: 3vw;
+}
+
+.name .ch {
+    display: inline-block;
+    transform: translateY(105%);
+    animation: rise .9s cubic-bezier(.2,.8,.2,1) forwards;
+    animation-delay: calc(var(--i) * 38ms);
+}
+
+@keyframes rise {
+    to { transform: translateY(0); }
+}
+
+.portrait {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 42%;
+    overflow: hidden;
+    background: var(--panel);
+    z-index: 1;
+}
+
+.portrait img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: none;
+}
+
+.portrait.has img {
+    display: block;
+}
+
+.portrait::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to right, var(--bg), transparent 45%);
+}
+
+.ph {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    gap: 8px;
+    background: linear-gradient(180deg, var(--panel), var(--glaze));
+}
+
+.portrait.has .ph {
+    display: none;
+}
+
+.ph b {
+    font-family: 'Fraunces', serif;
+    font-size: 85px;
+    font-weight: 300;
+    color: var(--bg);
+}
+
+.ph span {
+    font-size: 12px;
+    color: var(--bg);
+}
+
+.hero-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 45px;
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.role {
+    max-width: 40ch;
+    color: var(--muted);
+    font-size: 16px;
+}
+
+.scroll {
+    color: var(--glaze);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    white-space: nowrap;
+}
+
+/* MARQUEE */
+
+.marq {
+    border-block: 1px solid var(--line);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 16px 0;
+}
+
+.marq div {
+    display: inline-flex;
+    gap: 48px;
+    padding-right: 48px;
+    animation: slide 34s linear infinite;
+}
+
+.marq span {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 25px;
+    color: var(--muted);
+}
+
+.marq span:nth-child(even) {
+    color: var(--gold);
+}
+
+@keyframes slide {
+    to { transform: translateX(-50%); }
+}
+
+/* COMMON SECTION */
+
+section {
+    padding: 115px 0 45px;
+}
+
+.label {
+    font-size: 12px;
+    color: var(--glaze);
+    font-weight: 700;
+    letter-spacing: .12em;
+    margin-bottom: 28px;
+}
+
+h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(45px, 8vw, 110px);
+    line-height: .98;
+    letter-spacing: -.035em;
+    font-weight: 300;
+    margin-bottom: 45px;
+}
+
+h2 em {
+    font-weight: 400;
+}
+
+/* REVEAL */
+
+.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ABOUT */
+
+.statement {
+    max-width: 24em;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(27px, 4vw, 49px);
+    line-height: 1.25;
+    letter-spacing: -.015em;
+}
+
+.statement .w {
+    opacity: .2;
+    transition: opacity .25s;
+}
+
+.statement .w.on {
+    opacity: 1;
+}
+
+/* CARDS */
+
+.rows {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    border: 0;
+    margin-top: 38px;
+}
+
+.row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 100px 1fr 1.1fr auto;
+    align-items: center;
+    gap: 25px;
+    padding: 42px 30px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(
+            ellipse at 100% 50%,
+            color-mix(in srgb, var(--c, var(--glaze)) 15%, transparent),
+            transparent 65%
+        ),
+        var(--panel);
+    transition: border-color .35s, transform .35s, background .35s;
+}
+
+.row:hover {
+    border-color: var(--glaze);
+    transform: translateY(-3px);
+}
+
+.row .n {
+    color: var(--glaze);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .07em;
+}
+
+.row h3 {
+    position: relative;
+    z-index: 1;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(25px, 3.5vw, 43px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    transition: color .3s, transform .3s;
+}
+
+.row p {
+    position: relative;
+    z-index: 1;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    max-width: 42ch;
+}
+
+.row .go {
+    color: var(--glaze);
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+a.row:hover h3 {
+    color: var(--glaze);
+    transform: translateX(5px);
+}
+
+.row.static {
+    cursor: default;
+}
+
+.row .bg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 45%;
+    height: 100%;
+    color: var(--c, var(--glaze));
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.4;
+    opacity: .2;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity .4s, transform .7s;
+}
+
+.row:hover .bg {
+    opacity: .5;
+    transform: scale(1.05);
+}
+
+/* CONTACT */
+
+.lead {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 46ch;
+    margin-bottom: 35px;
+}
+
+.mail {
+    display: inline-block;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 5vw, 60px);
+    font-style: italic;
+    font-weight: 300;
+    border-bottom: 2px solid var(--glaze);
+    padding-bottom: 7px;
+    transition: color .3s;
+}
+
+.mail:hover {
+    color: var(--glaze);
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 110px;
+    border-top: 1px solid var(--line);
+    padding: 55px 0 45px;
+}
+
+footer .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+footer .logo {
+    display: inline-block;
+    color: var(--ink);
+    font-family: 'Fraunces', serif;
+    font-size: clamp(55px, 9vw, 110px);
+    font-weight: 300;
+}
+
+footer p {
+    margin-bottom: 8px;
+}
+
+.copy {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    font-size: 11px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .portrait {
+        width: 40%;
+    }
+
+    .row {
+        grid-template-columns: 75px 1fr;
+        gap: 16px;
+    }
+
+    .row p {
+        grid-column: 2;
+    }
+
+    .row .go {
+        grid-column: 2;
+    }
+}
+
+@media (max-width: 700px) {
+    nav .wrap {
+        height: 62px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .hero-outer {
+        min-height: auto;
+        justify-content: flex-start;
+    }
+
+    .portrait {
+        position: relative;
+        order: 2;
+        width: 100%;
+        height: 53vh;
+        min-height: 300px;
+    }
+
+    .portrait::after {
+        background: linear-gradient(to top, var(--bg), transparent 45%);
+    }
+
+    .hero {
+        order: 1;
+        padding-top: 65px;
+        padding-bottom: 35px;
+    }
+
+    .name {
+        font-size: clamp(55px, 14vw, 95px);
+    }
+
+    .name .ln:nth-child(n) {
+        padding-left: 0;
+    }
+
+    .hero-foot {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 28px;
+    }
+
+    .role {
+        font-size: 14px;
+    }
+
+    section {
+        padding: 85px 0 30px;
+    }
+
+    h2 {
+        font-size: clamp(43px, 12vw, 75px);
+    }
+
+    .statement {
+        font-size: clamp(26px, 7vw, 38px);
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+        gap: 13px;
+        padding: 30px 22px;
+    }
+
+    .row p,
+    .row .go {
+        grid-column: auto;
+    }
+
+    .row h3 {
+        font-size: 34px;
+    }
+
+    .row .bg {
+        width: 75%;
+        opacity: .13;
+    }
+
+    footer .wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .copy {
+        grid-column: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .name .ch { animation: none; transform: none; }
+    .marq div { animation: none; }
+    * { transition-duration: .01ms !important; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="wrap">
+        <a class="logo" href="#top">PRIYO.</a>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#ideas">Ideas</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+
+<div class="hero-outer">
+
+    <label class="portrait" id="portrait" title="Profile photograph">
+        <img
+            id="photo"
+            alt="Portrait of Mizanur Rahman Priota"
+            src="/static/assets/images/profile.jpg"
+            onload="document.getElementById('portrait').classList.add('has')"
+            onerror="this.removeAttribute('src')"
+        >
+
+        <div class="ph">
+            <b>MP</b>
+            <span>PRIYO.</span>
+        </div>
+    </label>
+
+    <div class="wrap hero">
+
+        <h1 class="name" id="name" aria-label="Mizanur Rahman Priota">
+            <span class="ln" aria-hidden="true">Mizanur</span>
+            <span class="ln" aria-hidden="true">Rahman</span>
+            <span class="ln" aria-hidden="true">Priota</span>
+        </h1>
+
+        <div class="hero-foot">
+            <p class="role">
+                Ceramic engineer and computer science student,
+                working across glaze technology, B2B sales and machine learning.
+            </p>
+
+            <a class="scroll" href="#about">SCROLL TO EXPLORE ↓</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- MARQUEE -->
+
+<div class="marq" aria-hidden="true">
+    <div id="marq"></div>
+</div>
+
+<!-- ABOUT -->
+
+<section id="about">
+    <div class="wrap">
+
+        <p class="label">01 — ABOUT ME</p>
+
+        <h2 class="reveal">
+            Beyond the <em>ordinary.</em>
+        </h2>
+
+        <p class="statement" id="statement">
+            A professional journey driven by curiosity, continuous learning and the desire to create meaningful things. My interests span materials technology, computer science, artificial intelligence and literature.
+        </p>
+
+    </div>
+</section>
+
+<!-- JOURNEY -->
+
+<section id="journey">
+    <div class="wrap">
+
+        <p class="label">02 — PROFESSIONAL JOURNEY</p>
+
+        <h2 class="reveal">
+            Experience &amp; <em>Education.</em>
+        </h2>
+
+        <div class="rows">
+
+            <a class="row" href="/experience">
+                <span class="n">01 / PROFESSIONAL</span>
+                <h3>Professional Experience</h3>
+                <p>
+                    My professional journey, industry experience,
+                    technical responsibilities and career development.
+                </p>
+                <span class="go">Explore Experience ↗</span>
+            </a>
+
+            <a class="row" href="/academic">
+                <span class="n">02 / ACADEMIC</span>
+                <h3>Academic Background</h3>
+                <p>
+                    My educational journey, academic achievements,
+                    qualifications and learning milestones.
+                </p>
+                <span class="go">Explore Academics ↗</span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- WORK -->
+
+<section id="work">
+    <div class="wrap">
+
+        <p class="label">03 — SELECTED WORK</p>
+
+        <h2 class="reveal">
+            Projects &amp; <em>Experiments.</em>
+        </h2>
+
+        <div class="rows">
+
+            <div class="row static" style="--c:#6FC3B2">
+
+                <svg class="bg" viewBox="0 0 600 300" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+                    <path d="M300 60L420 90M300 60L420 150M300 120L420 90M300 120L420 210M300 180L420 150M300 180L420 210M300 240L420 150M300 240L420 210M420 90L540 120M420 150L540 120M420 150L540 180M420 210L540 180"/>
+                    <g fill="currentColor">
+                        <circle cx="300" cy="60" r="9"/>
+                        <circle cx="300" cy="120" r="9"/>
+                        <circle cx="300" cy="180" r="9"/>
+                        <circle cx="300" cy="240" r="9"/>
+                        <circle cx="420" cy="90" r="9"/>
+                        <circle cx="420" cy="150" r="9"/>
+                        <circle cx="420" cy="210" r="9"/>
+                        <circle cx="540" cy="120" r="9"/>
+                        <circle cx="540" cy="180" r="9"/>
+                    </g>
+                </svg>
+
+                <span class="n">01 / MACHINE LEARNING</span>
+                <h3>Movie Recommender</h3>
+                <p>A Python-based movie recommendation project.</p>
+                <span class="go"></span>
+
+            </div>
+
+            <div class="row static" style="--c:#E0A06A">
+
+                <svg class="bg" viewBox="0 0 600 300" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+                    <rect x="300" y="190" width="30" height="90"/>
+                    <rect x="350" y="160" width="30" height="120"/>
+                    <rect x="400" y="130" width="30" height="150"/>
+                    <rect x="450" y="100" width="30" height="180"/>
+                    <rect x="500" y="70" width="30" height="210"/>
+                    <polyline points="290,200 380,150 470,110 560,50"/>
+                    <g fill="currentColor">
+                        <circle cx="320" cy="170" r="4"/>
+                        <circle cx="370" cy="130" r="4"/>
+                        <circle cx="430" cy="120" r="4"/>
+                        <circle cx="490" cy="80" r="4"/>
+                        <circle cx="540" cy="60" r="4"/>
+                    </g>
+                    <path d="M280 280h290M280 280V40"/>
+                </svg>
+
+                <span class="n">02 / DATA SCIENCE</span>
+                <h3>House Rent Prediction</h3>
+                <p>A machine learning experiment using housing data.</p>
+                <span class="go"></span>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- IDEAS -->
+
+<section id="ideas">
+    <div class="wrap">
+
+        <p class="label">04 — IDEAS &amp; EXPRESSION</p>
+
+        <h2 class="reveal">
+            Words have <em>power.</em>
+        </h2>
+
+        <div class="rows">
+
+            <a class="row" href="/articles">
+                <span class="n">01 / ARTICLES</span>
+                <h3>Articles &amp; Ideas</h3>
+                <p>
+                    Thoughts, perspectives, observations and ideas
+                    about technology, life and personal growth.
+                </p>
+                <span class="go">Explore Articles ↗</span>
+            </a>
+
+            <a class="row" href="/literature">
+                <span class="n">02 / LITERATURE</span>
+                <h3>Poetry &amp; Literature</h3>
+                <p>
+                    Poems, stories, novels and creative writing
+                    that explore imagination and human expression.
+                </p>
+                <span class="go">Explore Literature ↗</span>
+            </a>
+
+            <a class="row" href="/sports">
+                <span class="n">03 / ENTERTAINMENT</span>
+                <h3>Sports &amp; Entertainment</h3>
+                <p>
+                    Sports stories, player biographies,
+                    entertainment and interesting personalities.
+                </p>
+                <span class="go">Explore Sports ↗</span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+    <div class="wrap">
+
+        <p class="label">05 — GET IN TOUCH</p>
+
+        <h2 class="reveal">
+            Let’s <em>connect.</em>
+        </h2>
+
+        <p class="lead">
+            Have an idea, project or opportunity?
+            Feel free to reach out.
+        </p>
+
+        <a class="mail" href="mailto:priyoislam10@gmail.com">
+            Email Me ↗
+        </a>
+
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="wrap">
+
+        <div>
+            <a class="logo" href="/">PRIYO.</a>
+        </div>
+
+        <div>
+            <p>Address: Tejgaon, Dhaka, Bangladesh</p>
+            <p>Phone: <a href="tel:+8801776218880">+8801776218880</a></p>
+            <p>Email: <a href="mailto:priyoislam10@gmail.com">priyoislam10@gmail.com</a></p>
+        </div>
+
+        <p class="copy">
+            © 2026 Mizanur Rahman Priota. All rights reserved.
+        </p>
+
+    </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+(function () {
+
+    // NAME ANIMATION
+
+    var i = 0;
+
+    document.querySelectorAll('#name .ln').forEach(function (ln) {
+
+        var t = ln.textContent;
+        ln.textContent = '';
+
+        for (var k = 0; k < t.length; k++) {
+
+            var s = document.createElement('span');
+
+            s.className = 'ch';
+            s.style.setProperty('--i', i++);
+            s.textContent = t[k];
+
+            ln.appendChild(s);
+        }
+    });
+
+    // NAME FONT INTERACTION
+
+    var name = document.getElementById('name');
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!still) {
+
+        window.addEventListener('pointermove', function (e) {
+
+            var w = Math.round(
+                250 + (e.clientX / window.innerWidth) * 550
+            );
+
+            name.style.fontVariationSettings =
+                "'opsz' 144,'wght' " + w;
+
+        });
+
+    } else {
+
+        name.style.fontVariationSettings = "'opsz' 144,'wght' 500";
+
+    }
+
+    // MARQUEE
+
+    var words = [
+        'Ceramic Engineering',
+        'Glaze & Frits',
+        'Computer Science',
+        'Machine Learning',
+        'Materials Technology',
+        'Literature'
+    ];
+
+    var h = '';
+
+    for (var r = 0; r < 4; r++) {
+        words.forEach(function (w) {
+            h += '<span>' + w + '</span>';
+        });
+    }
+
+    document.getElementById('marq').innerHTML = h;
+
+    // STATEMENT WORD ANIMATION
+
+    var st = document.getElementById('statement');
+    var txt = st.textContent.trim().split(/\s+/);
+
+    st.innerHTML = txt.map(function (w) {
+        return '<span class="w">' + w + '</span>';
+    }).join(' ');
+
+    var ws = st.querySelectorAll('.w');
+
+    function paint() {
+
+        var rect = st.getBoundingClientRect();
+        var vh = window.innerHeight;
+
+        var p = Math.min(
+            1,
+            Math.max(0, (vh * .85 - rect.top) / (rect.height + vh * .35))
+        );
+
+        var n = Math.round(p * ws.length);
+
+        ws.forEach(function (w, j) {
+            w.classList.toggle('on', j < n || still);
+        });
+    }
+
+    window.addEventListener('scroll', paint, { passive: true });
+    window.addEventListener('resize', paint);
+
+    paint();
+
+})();
+</script>
+
+</body>
+</html>

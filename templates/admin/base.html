@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Dashboard{% endblock %} | PRIYO CMS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/admin.css') }}">
+</head>
+<body>
+
+<div class="admin-layout">
+
+    <aside class="sidebar">
+        <a href="/" class="brand">PRIYO<span>.</span></a>
+        <p class="sidebar-label">MANAGEMENT</p>
+
+        <nav class="side-nav">
+            <a href="{{ url_for('admin_dashboard') }}"
+               class="{{ 'active' if request.endpoint == 'admin_dashboard' else '' }}">
+                ◫ &nbsp; Dashboard
+            </a>
+
+            <a href="{{ url_for('admin_articles') }}"
+               class="{{ 'active' if request.endpoint in ['admin_articles', 'new_article', 'edit_article'] else '' }}">
+                ▤ &nbsp; Articles
+            </a>
+
+            <a href="{{ url_for('home') }}" target="_blank">↗ &nbsp; View Website</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>Logged in as</p>
+            <strong>{{ current_user.username }}</strong>
+
+            <form action="{{ url_for('admin_logout') }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button class="logout-btn" type="submit">Sign Out ↗</button>
+            </form>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+
+        <header class="topbar">
+            <span>PRIYO / ADMINISTRATION</span>
+            <span class="admin-user">● &nbsp; {{ current_user.username }}</span>
+        </header>
+
+        <div class="content">
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    <div class="alert {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+
+        </div>
+    </main>
+
+</div>
+
+</body>
+</html>

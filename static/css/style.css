@@ -1,0 +1,434 @@
+
+/* =========================================
+   PRIYO WEBSITE - MAIN STYLESHEET
+========================================= */
+
+:root {
+    --bg: #10131d;
+    --bg-soft: #171b27;
+    --cream: #eee9dc;
+    --muted: #a6a6a3;
+    --accent: #c7a77b;
+    --border: rgba(238, 233, 220, 0.14);
+    --font-heading: 'Fraunces', serif;
+    --font-body: 'Manrope', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+nav {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(16, 19, 29, 0.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+    max-width: 1250px;
+    min-height: 82px;
+    margin: auto;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: color .3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* =========================================
+   COMMON SECTIONS
+========================================= */
+
+section {
+    width: 100%;
+    padding: 110px 8%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.eyebrow {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+}
+
+.section-title {
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+p {
+    color: var(--muted);
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: 90px 8%;
+}
+
+.hero-inner {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 8vw, 105px);
+    line-height: .98;
+    letter-spacing: -3px;
+    margin-bottom: 28px;
+}
+
+.hero-description {
+    max-width: 570px;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.name .ln {
+    display: block;
+    overflow: hidden;
+    padding-bottom: .06em;
+}
+
+.name .ch {
+    display: inline-block;
+    transform: none;
+    animation: none;
+}
+
+.portrait {
+    width: 100%;
+    max-width: 370px;
+    aspect-ratio: 4 / 5;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+}
+
+.portrait img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: none;
+}
+
+.portrait.has img {
+    display: block;
+}
+
+.portrait .ph {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+}
+
+.portrait.has .ph {
+    display: none;
+}
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.about {
+    background: var(--bg-soft);
+}
+
+.about-content {
+    max-width: 850px;
+}
+
+.about-content p {
+    font-size: 17px;
+    line-height: 2.1;
+}
+
+/* =========================================
+   JOURNEY & IDEAS CARDS
+========================================= */
+
+.rows {
+    width: 100%;
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border);
+}
+
+.row {
+    position: relative;
+    display: block;
+    padding: 38px 25px;
+    border-bottom: 1px solid var(--border);
+    transition: background .35s ease, padding .35s ease;
+    overflow: hidden;
+}
+
+.row:hover {
+    background: rgba(199, 167, 123, .07);
+    padding-left: 40px;
+}
+
+.row .number {
+    display: block;
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.row h3 {
+    font-size: clamp(25px, 4vw, 38px);
+    margin-bottom: 10px;
+}
+
+.row p {
+    max-width: 650px;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.row .cta {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   IDEAS
+========================================= */
+
+.ideas {
+    background: var(--bg-soft);
+}
+
+.ideas .rows {
+    margin-top: 35px;
+}
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.contact-content {
+    max-width: 750px;
+}
+
+.contact-content h2 {
+    font-size: clamp(40px, 7vw, 75px);
+    margin-bottom: 25px;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.contact-links a {
+    color: var(--accent);
+    font-size: 13px;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 5px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 35px 8%;
+    border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+footer p {
+    font-size: 11px;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+.reveal {
+    opacity: 1;
+    clip-path: none;
+}
+
+@keyframes rise {
+    to {
+        transform: none;
+    }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+    section {
+        padding: 85px 6%;
+    }
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .portrait {
+        max-width: 320px;
+    }
+
+    .hero h1 {
+        font-size: clamp(55px, 12vw, 85px);
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-inner {
+        min-height: 70px;
+        padding: 0 5%;
+    }
+
+    .nav-links {
+        gap: 13px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+        letter-spacing: 0;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    section {
+        padding: 70px 6%;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+    .hero h1 {
+        font-size: clamp(48px, 13vw, 70px);
+        letter-spacing: -2px;
+    }
+
+    .row {
+        padding: 30px 15px;
+    }
+
+    .row:hover {
+        padding-left: 22px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

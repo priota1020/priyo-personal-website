@@ -1,0 +1,81 @@
+
+{% extends "admin/base.html" %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">CONTENT / LIBRARY</p>
+        <h1>Articles<span>.</span></h1>
+        <p>Create and manage your published content and drafts.</p>
+    </div>
+
+    <a href="{{ url_for('new_article') }}" class="primary-btn">
+        + New Article
+    </a>
+</div>
+
+<div class="table-card">
+    <table>
+        <thead>
+            <tr>
+                <th>TITLE</th>
+                <th>CATEGORY</th>
+                <th>STATUS</th>
+                <th>CREATED</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>
+                    <strong>{{ article.title }}</strong>
+                    <small>{{ article.slug }}</small>
+                </td>
+
+                <td>{{ article.category }}</td>
+
+                <td>
+                    <span class="status {{ article.status }}">
+                        {{ article.status }}
+                    </span>
+                </td>
+
+                <td>{{ article.created_at.strftime('%d %b %Y') }}</td>
+
+                <td class="actions">
+                    <a class="edit-link"
+                       href="{{ url_for('edit_article', article_id=article.id) }}">
+                        Edit
+                    </a>
+
+                    <form method="POST"
+                          action="{{ url_for('delete_article', article_id=article.id) }}"
+                          onsubmit="return confirm('Delete this article permanently?')">
+
+                        <input type="hidden" name="csrf_token"
+                               value="{{ csrf_token() }}">
+
+                        <button type="submit" class="delete-btn">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+
+            {% else %}
+            <tr>
+                <td colspan="5" class="empty-state">
+                    No articles found.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

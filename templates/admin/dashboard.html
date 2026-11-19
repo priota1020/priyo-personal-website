@@ -1,0 +1,109 @@
+
+{% extends "admin/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+    <div>
+        <p class="eyebrow">OVERVIEW / CONTROL CENTER</p>
+        <h1>Dashboard<span>.</span></h1>
+        <p>Welcome to your personal content management system.</p>
+    </div>
+
+    <a href="{{ url_for('new_article') }}" class="primary-btn">
+        + New Article
+    </a>
+</div>
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <p>TOTAL ARTICLES</p>
+        <h2>{{ total_articles }}</h2>
+        <span>All content entries</span>
+    </div>
+
+    <div class="stat-card">
+        <p>PUBLISHED</p>
+        <h2>{{ published_articles }}</h2>
+        <span>Live content</span>
+    </div>
+
+    <div class="stat-card">
+        <p>DRAFTS</p>
+        <h2>{{ draft_articles }}</h2>
+        <span>Unpublished content</span>
+    </div>
+
+    <div class="stat-card">
+        <p>ADMIN ACCOUNTS</p>
+        <h2>{{ total_admins }}</h2>
+        <span>Registered administrators</span>
+    </div>
+
+</div>
+
+<div class="section-heading">
+    <div>
+        <p class="eyebrow">CONTENT ACTIVITY</p>
+        <h2>Recent Articles</h2>
+    </div>
+
+    <a href="{{ url_for('admin_articles') }}" class="text-link">
+        View all ↗
+    </a>
+</div>
+
+<div class="table-card">
+
+    <table>
+        <thead>
+            <tr>
+                <th>ARTICLE</th>
+                <th>CATEGORY</th>
+                <th>STATUS</th>
+                <th>DATE</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for article in recent_articles %}
+            <tr>
+                <td>
+                    <strong>{{ article.title }}</strong>
+                    <small>{{ article.slug }}</small>
+                </td>
+
+                <td>{{ article.category }}</td>
+
+                <td>
+                    <span class="status {{ article.status }}">
+                        {{ article.status }}
+                    </span>
+                </td>
+
+                <td>{{ article.created_at.strftime('%d %b %Y') }}</td>
+
+                <td>
+                    <a class="edit-link"
+                       href="{{ url_for('edit_article', article_id=article.id) }}">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" class="empty-state">
+                    No articles yet. Create your first article.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
